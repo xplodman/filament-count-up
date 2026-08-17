@@ -4,14 +4,14 @@ namespace Xplodman\CountUp;
 
 use Illuminate\Contracts\View\View;
 
-class CountUp
+class CountUpStat
 {
     /**
      * Render an animated count-up number.
      *
      * The returned view is `Htmlable`, so it can be echoed directly in Blade
-     * (`{{ CountUp::make(1234.5) }}`) or passed straight into a Filament
-     * `Stat::make()` value (`Stat::make('Total', CountUp::make(1234.5))`),
+     * (`{{ CountUpStat::make(1234.5) }}`) or passed straight into a Filament
+     * `Stat::make()` value (`Stat::make('Total', CountUpStat::make(1234.5))`),
      * since Filament stats render their value through the same escaping
      * mechanism that respects `Htmlable`.
      */

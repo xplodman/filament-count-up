@@ -64,7 +64,7 @@
                 "Xplodman\\CountUp\\CountUpServiceProvider"
             ],
             "aliases": {
-                "CountUp": "Xplodman\\CountUp\\Facades\\CountUp"
+                "CountUpStat": "Xplodman\\CountUp\\Facades\\CountUpStat"
             }
         }
     },

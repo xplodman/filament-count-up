@@ -5,12 +5,12 @@ namespace Xplodman\CountUp\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Xplodman\CountUp\CountUp
+ * @see \Xplodman\CountUp\CountUpStat
  */
-class CountUp extends Facade
+class CountUpStat extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \Xplodman\CountUp\CountUp::class;
+        return \Xplodman\CountUp\CountUpStat::class;
     }
 }

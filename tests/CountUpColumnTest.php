@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Contracts\Support\Htmlable;
 use Livewire\Livewire;
 use Xplodman\CountUp\Tables\Columns\CountUpColumn;
 use Xplodman\CountUp\Tests\Fixtures\ProductsTable;
@@ -16,10 +17,17 @@ it('defaults to no explicit count up options', function () {
         ->and($column->getCountUpSuffix())->toBe('');
 });
 
-it('marks the column as html so the animated span is not escaped', function () {
+it('formats the state into a Htmlable so Filament never sanitizes away the alpine attributes', function () {
     $column = CountUpColumn::make('balance');
 
-    expect($column->isHtml())->toBeTrue();
+    $formatted = $column->formatState(1234.5);
+
+    // Filament's TextColumn only skips `Str::sanitizeHtml()` (which strips
+    // `x-data`/`x-text` as "unsafe" attributes) when the formatted state is
+    // an instance of Htmlable — returning a plain string here, even with
+    // ->html() set, would silently strip the alpine attributes and leave a
+    // static, non-animated span.
+    expect($formatted)->toBeInstanceOf(Htmlable::class);
 });
 
 it('accepts plain values for every count up option', function () {
@@ -55,7 +63,8 @@ it('renders the animated value inside a real filament table', function () {
 
     Livewire::test(ProductsTable::class)
         ->assertSee('EGP 1,234.50', escape: false)
-        ->assertSeeHtml('<span');
+        ->assertSeeHtml('<span')
+        ->assertSeeHtml('x-data="countUp(');
 });
 
 it('renders a null balance as zero', function () {

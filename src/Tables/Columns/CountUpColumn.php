@@ -4,7 +4,7 @@ namespace Xplodman\CountUp\Tables\Columns;
 
 use Closure;
 use Filament\Tables\Columns\TextColumn;
-use Xplodman\CountUp\Facades\CountUp;
+use Xplodman\CountUp\Facades\CountUpStat;
 
 class CountUpColumn extends TextColumn
 {
@@ -34,9 +34,7 @@ class CountUpColumn extends TextColumn
     {
         parent::setUp();
 
-        $this->html();
-
-        $this->formatStateUsing(fn ($state): string => CountUp::make(
+        $this->formatStateUsing(fn ($state) => CountUpStat::make(
             value: $state,
             decimals: $this->getCountUpDecimals(),
             duration: $this->getCountUpDuration(),
@@ -44,7 +42,7 @@ class CountUpColumn extends TextColumn
             decimalSeparator: $this->getCountUpDecimalSeparator(),
             prefix: $this->getCountUpPrefix(),
             suffix: $this->getCountUpSuffix(),
-        )->render());
+        ));
     }
 
     public function countUpDecimals(int | Closure | null $decimals): static

@@ -56,13 +56,13 @@ This is what powers a fully custom stats card, e.g. a widget view iterating over
 
 ### In a genuine `Stat::make()` widget
 
-`CountUp::make()` returns a `Htmlable` view, so it can be passed straight in as the stat's value:
+`CountUpStat::make()` returns a `Htmlable` view, so it can be passed straight in as the stat's value:
 
 ```php
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use Xplodman\CountUp\Facades\CountUp;
+use Xplodman\CountUp\Facades\CountUpStat;
 
-Stat::make('Total sales', CountUp::make($totalSales, decimals: 2, prefix: 'EGP '));
+Stat::make('Total sales', CountUpStat::make($totalSales, decimals: 2, prefix: 'EGP '));
 ```
 
 ### In a table column
