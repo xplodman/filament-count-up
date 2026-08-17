@@ -1,0 +1,73 @@
+<?php
+
+use Livewire\Livewire;
+use Xplodman\CountUp\Tables\Columns\CountUpColumn;
+use Xplodman\CountUp\Tests\Fixtures\ProductsTable;
+use Xplodman\CountUp\Tests\Models\Product;
+
+it('defaults to no explicit count up options', function () {
+    $column = CountUpColumn::make('balance');
+
+    expect($column->getCountUpDecimals())->toBeNull()
+        ->and($column->getCountUpDuration())->toBeNull()
+        ->and($column->getCountUpThousandsSeparator())->toBeNull()
+        ->and($column->getCountUpDecimalSeparator())->toBeNull()
+        ->and($column->getCountUpPrefix())->toBe('')
+        ->and($column->getCountUpSuffix())->toBe('');
+});
+
+it('marks the column as html so the animated span is not escaped', function () {
+    $column = CountUpColumn::make('balance');
+
+    expect($column->isHtml())->toBeTrue();
+});
+
+it('accepts plain values for every count up option', function () {
+    $column = CountUpColumn::make('balance')
+        ->countUpDecimals(2)
+        ->countUpDuration(500)
+        ->countUpThousandsSeparator('.')
+        ->countUpDecimalSeparator(',')
+        ->countUpPrefix('EGP ')
+        ->countUpSuffix(' only');
+
+    expect($column->getCountUpDecimals())->toBe(2)
+        ->and($column->getCountUpDuration())->toBe(500)
+        ->and($column->getCountUpThousandsSeparator())->toBe('.')
+        ->and($column->getCountUpDecimalSeparator())->toBe(',')
+        ->and($column->getCountUpPrefix())->toBe('EGP ')
+        ->and($column->getCountUpSuffix())->toBe(' only');
+});
+
+it('accepts closures for every count up option', function () {
+    $column = CountUpColumn::make('balance')
+        ->countUpDecimals(fn () => 3)
+        ->countUpDuration(fn () => 1200)
+        ->countUpPrefix(fn () => '$');
+
+    expect($column->getCountUpDecimals())->toBe(3)
+        ->and($column->getCountUpDuration())->toBe(1200)
+        ->and($column->getCountUpPrefix())->toBe('$');
+});
+
+it('renders the animated value inside a real filament table', function () {
+    Product::create(['name' => 'Widget', 'balance' => 1234.5]);
+
+    Livewire::test(ProductsTable::class)
+        ->assertSee('EGP 1,234.50', escape: false)
+        ->assertSeeHtml('<span');
+});
+
+it('renders a null balance as zero', function () {
+    Product::create(['name' => 'Widget', 'balance' => null]);
+
+    Livewire::test(ProductsTable::class)
+        ->assertSee('EGP 0.00', escape: false);
+});
+
+it('renders a negative balance with a leading minus sign', function () {
+    Product::create(['name' => 'Widget', 'balance' => -42.5]);
+
+    Livewire::test(ProductsTable::class)
+        ->assertSee('EGP -42.50', escape: false);
+});
