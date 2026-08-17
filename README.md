@@ -1,5 +1,5 @@
 <a href="https://github.com/xplodman/filament-count-up" class="filament-hidden">
-<img style="width: 100%; max-width: 100%;" alt="filament-count-up-art" src="art/banner.png">
+<img style="width: 100%; max-width: 100%;" alt="filament-count-up-art" src="art/banner.jpg">
 </a>
 
 # Animated count-up numbers for Filament stat widgets and table columns
