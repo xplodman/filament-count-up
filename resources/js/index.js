@@ -45,7 +45,9 @@ function registerCountUpAlpineComponent() {
 
             this.observer.observe(this.$el)
 
-            this.$cleanup(() => this.observer?.disconnect())
+            if (typeof this.$cleanup === 'function') {
+                this.$cleanup(() => this.observer?.disconnect())
+            }
         },
 
         animate(target) {
