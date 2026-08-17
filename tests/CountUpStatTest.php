@@ -87,3 +87,27 @@ it('escapes html special characters in the prefix and suffix for the static fall
         ->not->toContain('<script>')
         ->and($html)->toContain('&lt;script&gt;');
 });
+
+it('uses a given wire:key, so livewire replays the animation on refresh', function () {
+    $html = (string) CountUpStat::make(1234, wireKey: 'treasury-balance-1234');
+
+    expect($html)->toContain('wire:key="treasury-balance-1234"');
+});
+
+it('auto-generates a fresh wire:key by default, so it always replays on a livewire refresh', function () {
+    $html1 = (string) CountUpStat::make(1234);
+    $html2 = (string) CountUpStat::make(1234);
+
+    expect($html1)->toContain('wire:key="count-up-');
+
+    preg_match('/wire:key="([^"]+)"/', $html1, $match1);
+    preg_match('/wire:key="([^"]+)"/', $html2, $match2);
+
+    expect($match1[1])->not->toBe($match2[1]);
+});
+
+it('omits the wire:key attribute entirely when opted out', function () {
+    $html = (string) CountUpStat::make(1234, wireKey: false);
+
+    expect($html)->not->toContain('wire:key');
+});
