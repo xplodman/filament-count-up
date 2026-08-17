@@ -1,8 +1,12 @@
+<a href="https://github.com/xplodman/filament-count-up" class="filament-hidden">
+<img style="width: 100%; max-width: 100%;" alt="filament-count-up-art" src="art/stats-demo.jpg">
+</a>
+
 # Animated count-up numbers for Filament stat widgets and table columns
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/xplodman/filament-count-up.svg?style=flat-square)](https://packagist.org/packages/xplodman/filament-count-up)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/xplodman/filament-count-up/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/xplodman/filament-count-up/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/xplodman/filament-count-up/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/xplodman/filament-count-up/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/xplodman/filament-count-up/tests.yml?branch=master&label=tests&style=flat-square)](https://github.com/xplodman/filament-count-up/actions?query=workflow%3Atests+branch%3Amaster)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/xplodman/filament-count-up/fix-code-style.yml?branch=master&label=code%20style&style=flat-square)](https://github.com/xplodman/filament-count-up/actions?query=workflow%3Afix-code-style+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/xplodman/filament-count-up.svg?style=flat-square)](https://packagist.org/packages/xplodman/filament-count-up)
 
 Animate any number in your Filament app — dashboard stats, custom widget cards, table columns — so it counts up from zero instead of just appearing. No `countup.js` dependency, no build step in your app: it's a small self-contained Alpine.js component shipped and registered by this package.
