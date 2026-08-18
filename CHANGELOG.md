@@ -2,9 +2,18 @@
 
 All notable changes to `filament-count-up` will be documented in this file.
 
+## v1.0.5 - 2026-08-18
+
+### Maintenance
+
+- Scope the dist-archive `export-ignore` for `.github` down to just `workflows/` and `ISSUE_TEMPLATE/`, instead of excluding the whole directory. The blanket exclusion was hiding `.github/dependabot.yml` from the released archive, which caused package-health checks that scan the dist archive to keep reporting no dependency updater configured even though the file was present in the repo.
+
+**Full Changelog**: https://github.com/xplodman/filament-count-up/compare/v1.0.4...v1.0.5
+
 ## 1.0.4 - 2026-08-18
 
 ### Maintenance
+
 - Exclude `composer.lock` from the release dist archive via `.gitattributes` `export-ignore` — library packages shouldn't ship a lock file to consumers.
 - Add Dependabot configuration (`composer` and `github-actions` ecosystems, weekly schedule, 7-day cooldown) to keep dependencies and pinned Actions SHAs up to date.
 
