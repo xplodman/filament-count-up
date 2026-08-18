@@ -8,6 +8,10 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/xplodman/filament-count-up/tests.yml?branch=master&label=tests&style=flat-square)](https://github.com/xplodman/filament-count-up/actions?query=workflow%3Atests+branch%3Amaster)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/xplodman/filament-count-up/fix-code-style.yml?branch=master&label=code%20style&style=flat-square)](https://github.com/xplodman/filament-count-up/actions?query=workflow%3Afix-code-style+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/xplodman/filament-count-up.svg?style=flat-square)](https://packagist.org/packages/xplodman/filament-count-up)
+[![Plumb score](https://plumbphp.dev/badges/xplodman/filament-count-up/composite.svg)](https://plumbphp.dev/xplodman/filament-count-up)
+[![Plumb security](https://plumbphp.dev/badges/xplodman/filament-count-up/security.svg)](https://plumbphp.dev/xplodman/filament-count-up)
+[![Plumb maintenance](https://plumbphp.dev/badges/xplodman/filament-count-up/maintenance.svg)](https://plumbphp.dev/xplodman/filament-count-up)
+[![Plumb ecosystem](https://plumbphp.dev/badges/xplodman/filament-count-up/ecosystem.svg)](https://plumbphp.dev/xplodman/filament-count-up)
 
 Animate any number in your Filament app — dashboard stats, custom widget cards, table columns — so it counts up from zero instead of just appearing. No `countup.js` dependency, no build step in your app: it's a small self-contained Alpine.js component shipped and registered by this package.
 
