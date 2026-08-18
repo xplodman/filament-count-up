@@ -58,6 +58,34 @@ it('accepts closures for every count up option', function () {
         ->and($column->getCountUpPrefix())->toBe('$');
 });
 
+it('auto-replays by default (wire key defaults to true)', function () {
+    $column = CountUpColumn::make('balance');
+
+    expect($column->getCountUpWireKey())->toBeTrue();
+});
+
+it('accepts a plain wire key', function () {
+    $column = CountUpColumn::make('balance')->countUpWireKey('balance-42');
+
+    expect($column->getCountUpWireKey())->toBe('balance-42');
+});
+
+it('accepts opting out of auto-replay', function () {
+    $column = CountUpColumn::make('balance')->countUpWireKey(false);
+
+    expect($column->getCountUpWireKey())->toBeFalse();
+});
+
+it('accepts a closure wire key resolved against the current record', function () {
+    $product = Product::create(['name' => 'Widget', 'balance' => 1234.5]);
+
+    $column = CountUpColumn::make('balance')
+        ->record($product)
+        ->countUpWireKey(fn (Product $record) => "balance-{$record->id}-{$record->balance}");
+
+    expect($column->getCountUpWireKey())->toBe("balance-{$product->id}-{$product->balance}");
+});
+
 it('renders the animated value inside a real filament table', function () {
     Product::create(['name' => 'Widget', 'balance' => 1234.5]);
 

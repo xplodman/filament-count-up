@@ -20,6 +20,8 @@ class CountUpColumn extends TextColumn
 
     protected string | Closure $countUpSuffix = '';
 
+    protected bool | string | Closure $countUpWireKey = true;
+
     public function getState(): mixed
     {
         $state = parent::getState();
@@ -42,6 +44,7 @@ class CountUpColumn extends TextColumn
             decimalSeparator: $this->getCountUpDecimalSeparator(),
             prefix: $this->getCountUpPrefix(),
             suffix: $this->getCountUpSuffix(),
+            wireKey: $this->getCountUpWireKey(),
         ));
     }
 
@@ -87,6 +90,19 @@ class CountUpColumn extends TextColumn
         return $this;
     }
 
+    /**
+     * By default (`true`), a fresh key is generated on every render so the
+     * animation always replays on a Livewire refresh/poll instead of
+     * Alpine's morph preserving the old, already-settled value. Pass a
+     * string for a stable custom key, or `false` to opt out.
+     */
+    public function countUpWireKey(bool | string | Closure $wireKey): static
+    {
+        $this->countUpWireKey = $wireKey;
+
+        return $this;
+    }
+
     public function getCountUpDecimals(): ?int
     {
         return $this->evaluate($this->countUpDecimals);
@@ -115,5 +131,10 @@ class CountUpColumn extends TextColumn
     public function getCountUpSuffix(): string
     {
         return $this->evaluate($this->countUpSuffix) ?? '';
+    }
+
+    public function getCountUpWireKey(): bool | string
+    {
+        return $this->evaluate($this->countUpWireKey);
     }
 }
