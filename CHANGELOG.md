@@ -2,6 +2,14 @@
 
 All notable changes to `filament-count-up` will be documented in this file.
 
+## v1.0.6 - 2026-08-18
+
+### Maintenance
+
+- Add an `npm` ecosystem entry to `.github/dependabot.yml`. The repo commits `package-lock.json` (esbuild/prettier dev deps for the asset build), so package-health checks that require full ecosystem coverage from the dependency updater config were still failing even after `composer`/`github-actions` were covered.
+
+**Full Changelog**: https://github.com/xplodman/filament-count-up/compare/v1.0.5...v1.0.6
+
 ## v1.0.5 - 2026-08-18
 
 ### Maintenance
