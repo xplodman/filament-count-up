@@ -8,6 +8,7 @@
 /.idea                  export-ignore
 /.prettierrc            export-ignore
 /.package-lock.json     export-ignore
+/composer.lock          export-ignore
 /.editorconfig          export-ignore
 /.php_cs.dist.php       export-ignore
 /.vscode                export-ignore
