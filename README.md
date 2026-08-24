@@ -13,7 +13,7 @@
 [![Plumb maintenance](https://plumbphp.dev/badges/xplodman/filament-count-up/maintenance.svg)](https://plumbphp.dev/xplodman/filament-count-up)
 [![Plumb ecosystem](https://plumbphp.dev/badges/xplodman/filament-count-up/ecosystem.svg)](https://plumbphp.dev/xplodman/filament-count-up)
 
-Animate any number in your Filament app — dashboard stats, custom widget cards, table columns — so it counts up from zero instead of just appearing. No `countup.js` dependency, no build step in your app: it's a small self-contained Alpine.js component shipped and registered by this package.
+Animate any number in your Filament app — dashboard stats, custom widget cards, table columns — so it counts up from zero instead of just appearing. No `countup.js` dependency, no build step in your app: it's a small self-contained Alpine.js component shipped and registered by this package, inspired by [countup.js](https://inorganik.github.io/countUp.js/).
 
 - Register `CountUpPlugin` on a panel and every existing `Stat::make()` widget animates automatically — no per-widget changes. See [Registering the plugin](#registering-the-plugin).
 - Works in genuine `Stat::make()` widgets (with or without the plugin), fully custom Blade widgets, and `Tables\Columns\CountUpColumn`.
@@ -180,6 +180,7 @@ Please review [our security policy](.github/SECURITY.md) on how to report securi
 
 - [xplodman](https://github.com/xplodman)
 - [All Contributors](../../contributors)
+- [countup.js](https://inorganik.github.io/countUp.js/) — the original JavaScript library this package's animation is inspired by
 
 ## License
 
