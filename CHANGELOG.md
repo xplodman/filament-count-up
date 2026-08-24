@@ -2,6 +2,12 @@
 
 All notable changes to `filament-count-up` will be documented in this file.
 
+## v1.0.7 - 2026-08-24
+
+### Documentation
+
+- Credit and link the original [countup.js](https://inorganik.github.io/countUp.js/) library as the inspiration behind this package, in the README intro and Credits section.
+
 ## v1.0.6 - 2026-08-18
 
 ### Maintenance
